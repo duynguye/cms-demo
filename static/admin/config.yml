@@ -10,11 +10,12 @@ collections:
     label: 'Blog'
     folder: 'assets/content/blog'
     create: true
+    format: 'json'
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     editor:
       preview: false
     fields:
-      - { label: 'Title', name: 'title', widget: 'string', format: 'json' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime', format: 'json' }
-      - { label: 'Description', name: 'description', widget: 'string', format: 'json' }
-      - { label: 'Body', name: 'body', widget: 'markdown', format: 'json' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
