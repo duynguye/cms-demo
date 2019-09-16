@@ -44,13 +44,17 @@ export default {
     '@nuxtjs/bulma',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/markdownit'
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+  },
+  markdownit: {
+    injected: true
   },
   /*
   ** Build configuration
@@ -67,6 +71,18 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+    }
+  },
+
+  generate: {
+    routes: function() {
+      const fs = require('fs');
+      return fs.readdirSync('./assets/content/blog').map((file) => {
+        return {
+          route: `/blog/${file.slice(2, -5)}`, // Remove the .json from the end of the filename
+          payload: require(`./assets/content/blog/${file}`)
+        }
+      })
     }
   }
 }
